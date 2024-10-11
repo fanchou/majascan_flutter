@@ -5,11 +5,11 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.view.View
+import android.widget.RelativeLayout
 
 class QrBorderView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : View(context, attrs, defStyleAttr) {
+) : RelativeLayout(context, attrs, defStyleAttr) {
 
     private val mPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val mBorderPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -36,6 +36,7 @@ class QrBorderView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        if (canvas == null) return // 添加空值检查
 
         // 绘制边框
         canvas.drawLine(0f, 0f, width, 0f, mBorderPaint)
